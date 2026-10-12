@@ -1,4 +1,4 @@
-# dotagents
+# agents-folder
 
 **The `.agents/` folder for AI-assisted software projects.** An overview and fourteen Markdown templates
 that give a coding agent (Claude Code, Codex, or any other) the same thing a good engineer
@@ -59,7 +59,7 @@ Numbers match the file names.
 ## Changelog
 
 ### 2026-10-12
-- First public release, as `dotagents`. Project-specific names and paths removed.
+- First public release, as `agents-folder` (briefly `dotagents`; renamed the same day, the name was taken). Project-specific names and paths removed.
 
 ### 2026-10-06
 - 01: session-start pickup, live sources beat narrative docs, live-surface currency,

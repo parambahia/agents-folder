@@ -227,7 +227,7 @@ parallelizable — single-terminal standalone mode is the default.
 - Multi-terminal and multi-repo work: template 12.
 - Park, wake and the portfolio board (`PORTFOLIO.md`): template 13.
 - Paid client work: template 14.
-- Framework: vendored at `.agents/framework/`; master is your clone of the dotagents repo.
+- Framework: vendored at `.agents/framework/`; master is your clone of the agents-folder repo.
   Re-sync on wake. Port changes back to the master; never fork the vendored copy.
 
 ## File Conventions
