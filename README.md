@@ -1,6 +1,6 @@
 # dotagents
 
-**The `.agents/` folder for AI-assisted software projects.** Fourteen Markdown templates
+**The `.agents/` folder for AI-assisted software projects.** An overview and fourteen Markdown templates
 that give a coding agent (Claude Code, Codex, or any other) the same thing a good engineer
 has on day one: a resume point, written specs, a decisions ledger, runbooks, a review policy,
 provenance for every session, and an ops layer that proves the deployed thing is alive.
