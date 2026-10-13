@@ -58,6 +58,10 @@ Numbers match the file names.
 
 ## Changelog
 
+### 2026-10-13
+- 07: new section "Agentic Debugging (the code is not known)": facts, control, signal vs noise,
+  hypothesis-by-signal matrix, five tactics, layer descent, three reviewer points.
+
 ### 2026-10-12
 - First public release, as `agents-folder` (briefly `dotagents`; renamed the same day, the name was taken). Project-specific names and paths removed.
 

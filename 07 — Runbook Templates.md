@@ -92,6 +92,38 @@ If any post-deploy check fails:
 5. **Verify** — Failing test now passes. No regressions.
 6. **Document** — Create spec with root cause + fix for audit trail.
 
+## Agentic Debugging (the code is not known)
+
+Use this section when an agent debugs code that nobody has read in full. Source: Sridharan,
+"How to effectively debug when you no longer understand the code" (Oct 2026); adapted 13 Oct 2026.
+
+Warning: do not read the code first. Code shows what can happen. It does not show what did happen.
+Warning: do not change a fact. If a fact looks wrong, collect it again.
+
+1. Collect facts: bug report, logs, telemetry, config. Collect from many instances of the bug.
+2. Pick a control: a working run, or a run that fails in a different way.
+3. Check that the control does not have the same bug. If it does, pick a new control.
+4. Mark each fact. A fact only in the failing run is a signal. A fact in both runs is noise.
+5. Write a matrix: hypotheses in rows, signals in columns. Count the hypotheses that fit each signal.
+6. One fit is a strong signal. Many fits is a weak signal. SLOs and averages are weak.
+7. Test only the hypothesis that the strong signal supports. A reproduction is a hypothesis.
+8. Check the hypothesis against every fact, noise included. One contradicting fact removes it.
+9. If no hypothesis fits all facts, do these steps in order. Rebuild the matrix after each step.
+   a. Collect the facts again. Check host, time window and tool version.
+   b. Split a hypothesis that is too coarse.
+   c. Merge hypotheses that are too fine.
+   d. Combine two hypotheses that each fit part of the facts.
+   e. Write a new hypothesis from the existing facts only.
+10. If every signal is weak, collect facts one layer down: logs, then traces, then process state.
+    Stop at the first strong signal.
+11. State a root cause only when exactly one hypothesis fits every fact. Cite the fact for each claim.
+12. Start a fresh reviewer after steps 4, 7 and 11. Use a different model family if you can.
+    The reviewer finds noise in the signals, a weak signal, a skipped step 9, and one fact the root
+    cause fails.
+13. Warning: a reviewer cannot find a fact that is missing. Add the missing source to the logs.
+14. Write the number of human interventions in the session log. Each one is a gap in the runbook or
+    the logs.
+
 ## Common Patterns
 - Data stale? → Check pipeline schedule + last run log
 - API returning errors? → Check health endpoint, then logs
