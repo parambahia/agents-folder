@@ -118,3 +118,5 @@ branch FROM staging; the orchestrator merges spec branches → staging. Maintain
 staging↔main source-of-truth ledger (divergence table, design decisions, promotion runbook)
 and append to it as part of processing every completion brief — a merge not recorded there
 didn't happen. Any prod hotfix during a freeze merges back into staging the same day.
+
+- A worker that must move one measured number runs the "Measured optimisation loop" in template 05, in its own worktree, under the caps in template 11.

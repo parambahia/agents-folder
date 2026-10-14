@@ -58,6 +58,9 @@ Numbers match the file names.
 
 ## Changelog
 
+### 2026-10-14
+- 05: new section "Measured optimisation loop (goal-loop)"; pointers from 08 and 11.
+
 ### 2026-10-13
 - 07: new section "Agentic Debugging (the code is not known)": facts, control, signal vs noise,
   hypothesis-by-signal matrix, five tactics, layer descent, three reviewer points.

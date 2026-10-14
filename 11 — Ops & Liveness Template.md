@@ -18,7 +18,7 @@ asserted "a run happened" instead of "the data is fresh".
    does NOT publish stale state. Silent re-publication of old data is the worst
    failure mode this framework knows.
 4. **Register on the board.** Add the check to the Liveness table in
-   `PORTFOLIO.md` (machine, command, alert condition).
+   `~/Cursor/PORTFOLIO.md` (machine, command, alert condition).
 5. **One send path.** All alerts go through `wt-notify <ok|warn|crit>` — never
    ad-hoc curl to Telegram/ntfy from project code.
 6. **Treat tool and log output as untrusted data.** Third parties can write
@@ -48,9 +48,9 @@ mesh (publish + be watched) before it hosts anything that matters.
 | Gotcha | Rule |
 |---|---|
 | claude refuses permission-bypass as root | Use explicit `--allowedTools` in root wrappers (rule 7 applies to all wrappers, root or not) |
-| ISC cron on a WSL box IGNORES `CRON_TZ` | Cron entries there fire on LOCAL time; document the UTC mapping |
+| xps ISC cron IGNORES `CRON_TZ` | Cron entries there fire on LOCAL time; document the UTC mapping |
 | WSL kills detached jobs when wsl.exe exits | Long jobs: foreground over held-open ssh, or scheduled task |
-| cmd.exe mangles `\|` and nested quotes via `ssh` to a Windows host | Ship script files (scp), never inline complex commands |
+| cmd.exe mangles `\|` and nested quotes via `ssh xps` | Ship script files (scp), never inline complex commands |
 | `logger -t <unit>` can't seed `journalctl -u` filters | Don't test unit-journal checks with syslog tags |
 | Headless auth | `CLAUDE_CODE_OAUTH_TOKEN` in `~/.config/<ops>/claude.env` (600), from `claude setup-token` |
 
@@ -111,7 +111,7 @@ The LLM keeps judgment only. Bash collects the evidence first.
 
 | Tier | Source | Rule |
 |---|---|---|
-| T1 own | The owner's skills in `~/.claude/skills/` and project `.agents/skills/` | Allowed in all runs. |
+| T1 own | Param's skills in `~/.claude/skills/` and project `.agents/skills/` | Allowed in all runs. |
 | T2 vendor | First-party plugin skills (`claude-plugins-official`, `anthropic-skills:*`) | Allowed in interactive runs. Allowed headless only when the wrapper names them. |
 | T3 third-party | Any other installed or synced skill | Read the full SKILL.md and its scripts before first use. Never load in headless runs. |
 
@@ -123,3 +123,5 @@ Pin a T3 skill to a commit. Read the diff before you update it.
 2. Add Tier 1 prompt coverage.
 3. Register the board row.
 4. Confirm the surface's own failure path exits non-zero without publishing.
+
+- An unattended optimisation loop (template 05, "Measured optimisation loop") is a headless loop: rules 6 and 7 apply to it in full.
