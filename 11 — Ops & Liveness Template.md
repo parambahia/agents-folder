@@ -125,3 +125,24 @@ Pin a T3 skill to a commit. Read the diff before you update it.
 4. Confirm the surface's own failure path exits non-zero without publishing.
 
 - An unattended optimisation loop (template 05, "Measured optimisation loop") is a headless loop: rules 6 and 7 apply to it in full.
+
+## Production readiness ledger (create at a trigger, not on day one)
+
+Create `.agents/architecture/READINESS-LEDGER.md` when one of these occurs:
+- A second paying customer is in discussion.
+- An outside party asks for a security questionnaire, a pen test or an audit.
+- The surface stores personal, payment or health data.
+
+1. Use these 18 domains as rows: identity and auth; tenancy and authorisation; data model and
+   migrations; backups and recovery; input, i18n and money; security (OWASP); compliance;
+   infrastructure and deploy; async jobs; email; observability; testing; billing; API and
+   webhooks; AI-specific (injection, data to the model, spend caps, evals, fallback); UX states;
+   code and process; business ownership (accounts, keys, bus factor).
+2. Give each row one status: COVERED, PARTIAL, NOT APPLICABLE or GAP.
+3. Cite a file, spec or live probe for COVERED and PARTIAL. A claim with no citation is GAP.
+4. Give each NOT APPLICABLE row its reason and the event that ends it.
+5. Re-check a row from the live box, not the repo. A script that never ran is not evidence.
+6. Re-read the ledger at each trigger and at each milestone promotion.
+
+Spec rule: a spec that changes a ledger row updates the row in the same commit (template 02,
+"Readiness rows touched").

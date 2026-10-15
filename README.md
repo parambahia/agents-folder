@@ -58,6 +58,9 @@ Numbers match the file names.
 
 ## Changelog
 
+### 2026-10-15
+- 01: rule 3a Comments. 02: Altitude section + readiness line. 11: Production readiness ledger.
+
 ### 2026-10-14
 - 05: new section "Measured optimisation loop (goal-loop)"; pointers from 08 and 11.
 

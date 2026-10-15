@@ -45,6 +45,13 @@ external requirements (emails, governance docs, user feedback).}
 - [ ] AC2: {Specific, verifiable condition}
 - [ ] AC3: {Specific, verifiable condition}
 
+## Altitude
+
+- **Outcome served:** {the goal beyond this spec, as a verb phrase}
+- **Expert gap:** {what a top professional would do here that the requirements omit — adopted, deferred, or rejected with reason}
+- **External proof:** {an artefact outside the author and the reviewer: test, live metric, backtest, parallel run, third-party check}
+- "None found" is a valid answer. A blank on a P0/P1 spec is not.
+
 ## Technical Approach
 
 {How should this be implemented? Which files are affected?
@@ -60,6 +67,7 @@ Only include if the approach matters — leave blank for obvious tasks.}
 ### Live Surfaces and Negative Knowledge
 - Live surfaces touched: {system-map diagram / CONTEXT.md / tours / changelog — or "none"}
 - NK entries in scope: {NK-n, … — or "none"}
+- Readiness rows touched: {row names — or "none" — or "no ledger"} (template 11, Production readiness ledger)
 
 ## Test Plan
 

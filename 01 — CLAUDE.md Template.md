@@ -48,6 +48,14 @@ Replace anything in `{braces}` with your project's specifics.
 - Every changed line should trace directly to the request.
 - Remove only what YOUR changes made unused.
 
+
+### 3a. Comments
+- A comment states WHY, a quirk, or a constraint the code cannot show. Nothing else.
+- Delete a comment that says WHAT the code does.
+- Never copy a workaround comment into new code. "Match existing style" excludes workarounds.
+- A TODO, FIXME or "for now" carries a ledger id (SPEC-n, NK-n, issue). Delete one without an id.
+- When a change ends a workaround, delete its comment in the same commit.
+
 ### 4. Goal-Driven Execution
 - Transform tasks into verifiable goals with success criteria.
 - For multi-step tasks, state a plan with checkpoints.
