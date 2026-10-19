@@ -112,8 +112,6 @@ For data pipelines and ML systems:
 
 ## Agent Testing Workflow
 
-When an agent completes a spec:
-
 When an agent works a spec:
 1. Before you change code, run the full suite. Record pass, fail and skip counts as the baseline.
 2. For a behaviour change, list its failure modes. Write the test for the next mode. See it fail for the expected reason.
