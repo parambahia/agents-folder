@@ -41,7 +41,7 @@ overall testing approach and standards.
 
 - Every test names the defect it catches. Delete a test that cannot name one.
 - Delete tautological and change-detector tests. They block change and catch nothing.
-- For a unit in isolation: write the failure modes first, then the code, then one test per mode.
+- For a unit in isolation: list the failure modes first. Then write one failing test per mode before its code.
 - A bug fix gets a regression test only when it closes a real behaviour gap.
 - Keep integration tests that encode failure modes. E2E does not replace them.
 
@@ -50,6 +50,42 @@ overall testing approach and standards.
 - Branch on exit codes, never on grepped output. `cmd | tail` hides a failing exit code.
 - Assert a non-zero collected or scanned count. "No tests ran" exits 0 and looks green.
 - Prefer an executed predicate over a source grep.
+
+## Architecture Fitness Functions
+
+A fitness function is a script that checks one architecture rule. It exits non-zero when the rule breaks.
+Source: Ford, Parsons, Kua, Sadalage, *Building Evolutionary Architectures*, 2nd ed. (2022).
+
+1. Write a fitness function for each architecture rule that a script can check.
+2. Name the rule it guards (ADR, NK entry or CLAUDE.md law) in its first comment line.
+3. Run build-time fitness functions in the pre-commit or CI gate.
+4. Treat Tier 0 checks (template 11) as the runtime fitness functions.
+5. Keep each function fast and deterministic. Fix or delete a flaky one within one week.
+6. A rule that no script can check stays prose. Mark it "review-only" in its ADR.
+
+Examples:
+- Dependency direction: policy modules never import adapters, the UI or the web framework.
+- Honesty law: every endpoint that returns a figure also returns its provenance fields.
+- Single writer: no script outside the service opens the production database file.
+
+## UI Copy Discipline
+
+- Ask first: should this string exist? Do not polish copy that should be cut.
+- Cut a caption that repeats its label, field or value.
+- Cut copy that rules out a failure the user never saw ("never loses your files"). Fix the bug; do not describe the fix.
+- Keep: a consequence before a destructive action, a scope fact the user cannot see, an empty-state next step, units on a bare value.
+- Never write "does X — never Y" lines or self-praise in labels.
+- Review in context (label, value, button). List each cut as file:line in the completion note beside "Placeholders".
+
+## Pre-launch Synthetic Users
+
+- Before launch, run 5 persona agents in a real browser from landing page to first success: impatient, skeptic, 375 px on slow 3G, non-native reader, breaker.
+- Each agent saves a screenshot at every stall and one line on why it stalled.
+- Run a 3-account attack pass (A, B, admin) on the same build: each account tries to read, change or delete the others' data, and every attack is a saved script.
+- Prove each protection can fail: show the attack succeeding with the control switched off, then failing with it on.
+- Rank findings by how many agents hit them. Security findings rank first.
+- Fix through normal specs. Then run the same agents and scripts again; save both runs as evidence.
+- Use a staging branch and test accounts only. Never run against production data.
 
 ## Pre-Commit Checks
 
@@ -72,14 +108,19 @@ For data pipelines and ML systems:
 - [ ] Row count sanity checks
 - [ ] Metric boundary checks (WAPE < 1.0, bias within ±100%)
 - [ ] Freshness checks (data not stale)
+- [ ] Rebuild check: recompute one derived table from its sources and compare it with the stored copy
 
 ## Agent Testing Workflow
 
 When an agent completes a spec:
-1. Run spec-defined tests
-2. Run full test suite to check for regressions
-3. Log results in spec's Completion Log
-4. If tests fail, fix before marking done — never skip
+
+When an agent works a spec:
+1. Before you change code, run the full suite. Record pass, fail and skip counts as the baseline.
+2. For a behaviour change, list its failure modes. Write the test for the next mode. See it fail for the expected reason.
+3. Implement. Run the spec-defined tests.
+4. Run the full suite. Compare the counts with the baseline. A new skip or a lower collected count is a failure.
+5. Log results in the spec's Completion Log.
+6. If tests fail, fix them before you mark the spec done. Never skip a failing test.
 ```
 
 ## Measured optimisation loop (goal-loop)

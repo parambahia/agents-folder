@@ -16,6 +16,7 @@ Append-only log. Never delete entries.
 **Date:** {YYYY-MM-DD}
 **Decided by:** {person, and where it is in writing}
 **Status:** accepted | superseded by ADR-{NNN} | deprecated
+**Checked by:** {fitness function path, Tier 0 check, or "review-only"}
 **Context:** {What situation prompted this decision?}
 **Decision:** {What was decided and why?}
 **Alternatives considered:**
@@ -34,6 +35,14 @@ Append-only log. Never delete entries.
 
 An ADR that overrides a standing project rule names the rule, the scope of the
 exception and its bounds. Every other rule stands.
+
+Write an ADR when a decision meets one of these tests:
+- It is expensive to reverse: data model, storage engine, public API, auth, deploy topology.
+- It crosses two or more components or bounded contexts.
+- A spec's "Alternative design" line rejected a real option (template 02).
+Write an NK entry instead when you only reject an option.
+At each milestone, re-read the accepted ADRs. Find each ADR that the code no longer follows.
+For each one, restore the code, or write a superseding ADR that states the reason.
 
 ---
 

@@ -123,6 +123,12 @@ Pin a T3 skill to a commit. Read the diff before you update it.
 2. Add Tier 1 prompt coverage.
 3. Register the board row.
 4. Confirm the surface's own failure path exits non-zero without publishing.
+5. Give every outbound call (HTTP, database, LLM, bot API) a timeout. Cap retries and add backoff.
+6. Make every job and every message consumer idempotent. A re-run or a replayed message changes nothing.
+7. Give every growing store (logs, snapshots, caches) a purge or rotation rule and a size alert. Exempt a long-term record by name.
+8. When a dependency fails, degrade only the feature that uses it. Keep the rest of the surface up.
+
+Items 5–8: Nygard, *Release It!*, 2nd ed. (2018); Kleppmann, *DDIA* (2017; 2nd ed. 2026).
 
 - An unattended optimisation loop (template 05, "Measured optimisation loop") is a headless loop: rules 6 and 7 apply to it in full.
 

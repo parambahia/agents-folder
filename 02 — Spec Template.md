@@ -57,6 +57,8 @@ external requirements (emails, governance docs, user feedback).}
 {How should this be implemented? Which files are affected?
 Only include if the approach matters — leave blank for obvious tasks.}
 
+**Alternative design:** {one other approach and why it lost — required for multi-file specs. If the choice is hard to reverse, write an ADR (template 06).}
+
 ### Files to Change
 - `path/to/file.py` — {what changes}
 - `path/to/other.tsx` — {what changes}

@@ -49,7 +49,10 @@ If any post-deploy check fails:
 - [ ] Give the reviewer the diff and the acceptance criteria, never the author's claims
 
 ### During Review
-- [ ] Changes trace directly to the spec (no scope creep)
+- [ ] Changes trace directly to the spec: no unrequested feature, option or fallback
+- [ ] No test is deleted, skipped, weakened or marked expected-fail without a reason in the spec
+- [ ] Each commit is structure only or behaviour only (template 01, Surgical Changes)
+- [ ] No new shallow module: an interface almost as complex as the code behind it
 - [ ] Tests cover the acceptance criteria
 - [ ] No security vulnerabilities introduced
 - [ ] No hardcoded secrets
@@ -123,6 +126,19 @@ Warning: do not change a fact. If a fact looks wrong, collect it again.
 13. Warning: a reviewer cannot find a fact that is missing. Add the missing source to the logs.
 14. Write the number of human interventions in the session log. Each one is a gap in the runbook or
     the logs.
+
+## Changing Code Nobody Has Read
+
+Sources: Feathers, *Working Effectively with Legacy Code* (2004); Willison, *Agentic Engineering Patterns* (2026).
+
+Warning: do not edit untested code before you pin its current behaviour.
+
+1. Ask the agent for a linear walkthrough of the code path. Read it before you plan the change.
+2. Find a seam: a point where you can test or replace behaviour without editing the code there.
+3. Write characterisation tests at the seam. They assert what the code does now, not what it should do.
+4. Commit the tests alone. Make the change in a separate commit.
+5. When a characterisation test fails, decide: bug fixed (update the test) or regression (fix the code).
+6. Record that decision in the commit message.
 
 ## Common Patterns
 - Data stale? → Check pipeline schedule + last run log

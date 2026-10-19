@@ -47,6 +47,7 @@ project-root/
 │   │   ├── TEST-PLAN.md
 │   │   └── test-results/
 │   ├── architecture/            # System architecture decisions
+│   ├── lexicon/                 # Optional: one file per bounded context (template 04)
 │   │   ├── DECISIONS.md         # ADRs (Architecture Decision Records)
 │   │   └── SYSTEM-MAP.md        # Current system state
 │   ├── governance/

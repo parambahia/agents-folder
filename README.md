@@ -58,6 +58,9 @@ Numbers match the file names.
 
 ## Changelog
 
+### 2026-10-19
+- Engineering canon distilled (29 works): deep modules, structure-vs-behaviour commits, design it twice, C4 levels, lexicons per bounded context, fitness functions, ADR triggers and decay, seams and characterisation tests, stability rules for deploys, UI copy discipline, pre-launch synthetic users.
+
 ### 2026-10-15
 - 01: rule 3a Comments. 02: Altitude section + readiness line. 11: Production readiness ledger.
 

@@ -41,12 +41,18 @@ Replace anything in `{braces}` with your project's specifics.
 - No abstractions for single-use code.
 - No "flexibility" or "configurability" that wasn't requested.
 - If 200 lines could be 50, rewrite it.
+- Make a module deep: a small interface over the logic it hides.
+- A caller uses a module from its interface alone. If a caller must read the body, redesign the interface.
+- Before new code, reuse in this order: code already in the repo, the standard library or platform, an installed dependency. Add a dependency only when none of these does the job.
+- End each change report with one line: what you skipped or did not check.
 
 ### 3. Surgical Changes
 - Touch only what you must. Don't "improve" adjacent code.
 - Match existing style, even if you'd do it differently.
 - Every changed line should trace directly to the request.
 - Remove only what YOUR changes made unused.
+- Commit a structure change (rename, move, extract) apart from a behaviour change. Never mix them in one commit.
+- A structure commit leaves every test assertion unchanged.
 
 
 ### 3a. Comments

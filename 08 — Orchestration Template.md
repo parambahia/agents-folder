@@ -60,6 +60,8 @@ Workers are autonomous executors scoped to a single spec:
   Update the SAME brief file, then re-ping. The spec is finished only on "SPEC-{NNN} accepted".
 
 **A worker NEVER:** merges to main · modifies files outside its handoff scope · touches other
+handoff files · updates BACKLOG.md or STATE.md · changes an interface that code outside its
+scope calls (it reports the need in the brief).
 handoff files · updates BACKLOG.md or STATE.md.
 
 ## Handoff Document Format
@@ -72,6 +74,7 @@ handoff files · updates BACKLOG.md or STATE.md.
 - Numbered implementation steps
 - Acceptance criteria (from the spec)
 - Constraints (what NOT to touch), including files that live sibling workers own
+- Bounded context: one per handoff. Split a spec that spans two, or name one owner for each shared interface.
 - Live-surface impact (template 01) and the NEGATIVE-KNOWLEDGE entries in scope
 - Decisions that are NOT the worker's (for example "the flag flip is not yours")
 - "When Done" checklist (tests, code review, write completion brief, commit to branch,
