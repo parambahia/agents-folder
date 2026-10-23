@@ -45,6 +45,16 @@ external requirements (emails, governance docs, user feedback).}
 - [ ] AC2: {Specific, verifiable condition}
 - [ ] AC3: {Specific, verifiable condition}
 
+**Pre-launch rewrite licence (optional):** YES / NO
+If YES, all four must hold, and the spec lists each as a fact:
+- No real user and no real user data exist. Any rows present are labelled synthetic.
+- Every derived table can be rebuilt from its sources (template 05 rebuild check).
+- Input validation, error states and provenance fields stay. Only handling for old states is dropped.
+- Tests for the acceptance criteria stay green after the rewrite.
+The licence ends at the first real user or real row. Record the end date in STATE.md. After that, every schema change needs a migration.
+
+**UI prototype:** for a spec that adds a screen, attach an approved static prototype (HTML or Claude Design) before code starts. The prototype is throwaway and is never merged.
+
 ## Altitude
 
 - **Outcome served:** {the goal beyond this spec, as a verb phrase}

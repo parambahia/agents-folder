@@ -58,6 +58,9 @@ Numbers match the file names.
 
 ## Changelog
 
+### 2026-10-24
+- Review measurement (fix rate per reviewer), optional Lens Review with sourced expert cards, UI copy additions, pre-launch rewrite licence, static UI prototype before screen code.
+
 ### 2026-10-19
 - Engineering canon distilled (29 works): deep modules, structure-vs-behaviour commits, design it twice, C4 levels, lexicons per bounded context, fitness functions, ADR triggers and decay, seams and characterisation tests, stability rules for deploys, UI copy discipline, pre-launch synthetic users.
 

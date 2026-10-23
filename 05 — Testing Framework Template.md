@@ -73,6 +73,8 @@ Examples:
 - Ask first: should this string exist? Do not polish copy that should be cut.
 - Cut a caption that repeats its label, field or value.
 - Cut copy that rules out a failure the user never saw ("never loses your files"). Fix the bug; do not describe the fix.
+- If a screen needs a caption to make sense, change the layout, not the caption.
+- Never cut an input's visible label or an error message. Both are required for accessibility.
 - Keep: a consequence before a destructive action, a scope fact the user cannot see, an empty-state next step, units on a bare value.
 - Never write "does X — never Y" lines or self-praise in labels.
 - Review in context (label, value, button). List each cut as file:line in the completion note beside "Placeholders".

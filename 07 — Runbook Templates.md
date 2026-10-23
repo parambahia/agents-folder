@@ -72,6 +72,17 @@ If any post-deploy check fails:
 3. On a fix verdict, send the findings to a worker as a numbered fix list (template 08).
 4. Re-run the gate on the fix delta. Promote only on a satisfied gate.
 5. The promotion is the user's call. The gate informs it; it does not make it.
+6. Count findings raised, fixed and WONTFIX per reviewer. Write the counts in the Completion Log. Compute the fix rate: fixed divided by raised.
+7. Put the stable part of the review prompt first (acceptance criteria, repo rules, diff) and any focus text last, so repeated passes share a cached prefix.
+8. Ask the reviewer to rate a finding critical or warning only when it can name the input that triggers it. Mark any other finding UNVERIFIED.
+
+### Lens Review (optional, milestone gates only)
+1. Use at most 3 lenses. Each lens is one expert card: `.agents/review-cards/<name>.md`, at most 40 lines.
+2. A card has: who and sources (URLs, date read); 5 principles in your own words; 5 checkable "flag if" items; one line, "Out of scope for this lens".
+3. Build a card only from material you opened. Mark a point from memory as RECALLED. Do not use a card with more than 2 RECALLED points.
+4. Send every lens the same contract and diff first. Put the card last.
+5. Each lens returns findings as file:line plus the "flag if" item it matched. Reject any finding without both.
+6. Count findings raised and fixed per lens (Cross-Model Gate, step 6). Drop a lens with a fix rate under 20% after three milestones.
 
 ### Completion
 - [ ] Review outcome logged in spec's Completion Log
